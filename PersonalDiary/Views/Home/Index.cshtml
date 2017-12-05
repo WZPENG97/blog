@@ -1,0 +1,28 @@
+﻿@model List<Diary>
+@{
+    ViewBag.Title = "Home Index";
+}
+
+<table class="table table-bordered table-condensed table-hover table-striped">
+    <tr>
+        <td colspan="5">
+            <a href="@Url.Content("~/Home/Create")">新建日记</a>
+        </td>
+    </tr>
+    <tr>
+        <td>Title</td>
+        <td>User</td>
+        <td>PubDate</td>
+        <td>操作</td>
+    </tr>
+    @foreach (var diary in  Model) {
+        <tr>
+            <td>@diary.Title</td>
+            <td>@diary.User</td>
+            <td>@diary.PubDate</td>
+            <td>
+                <a href="@Url.Content("~/Home/Remove/"+@diary.Id)">删除</a>
+            </td>
+        </tr>
+    }
+</table>

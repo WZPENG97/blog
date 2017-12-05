@@ -1,0 +1,32 @@
+﻿@model User
+
+@{
+    ViewBag.Title = "Account Login";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        <label for="UserName">UserName</label>
+        <input type="text" class="form-control" placeholder="Enter UserName" id="UserName" name="UserName" />
+    </div>
+
+    <div class="form-group">
+        <label for="PassWord">UserName</label>
+        <input type="password" class="form-control" placeholder="Enter PassWord" id="PassWord" name="PassWord" />
+    </div>
+
+    <div class="btn-group pull-right">
+        <button type="submit" class="btn btn-primary" id="btnLogin">Login</button>
+        <button type="button" class="btn btn-default" id="btnRegister">Register</button>
+    </div>
+    <div class="clearfix"></div>
+}
+
+<script>
+    $(function () {
+        $("#btnRegister").click(function () {
+            location.href = "Register"
+        })
+    })
+</script>

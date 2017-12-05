@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1;" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.2.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</head>
+<body class="container">
+    <header>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <div class="navbar-brand">
+                        <a href="~/Home/Index">MyDiary</a>
+                    </div>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            @{ 
+                                var UserName = Session["User"] == null ? string.Empty : ((User) Session["User"]).UserName;
+                            }
+                            <a href="javascript:">@UserName</a>
+                        </li>
+                        <li>
+                            @if (Session["User"] == null)
+                            {
+                                <a href="~/Account/Login">Login</a>
+                            }
+                            else
+                            {
+                                <a href="~/Account/Logoff">Logoff</a>
+                            }
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <h2 class="page-header">@ViewBag.Title</h2>
+    <div>
+        @RenderBody()
+    </div>
+    <footer>
+        <nav class="navbar-default navbar-fixed-bottom text-center">
+            &copy; @DateTime.Now.Year
+        </nav>
+    </footer>
+</body>
+</html>
