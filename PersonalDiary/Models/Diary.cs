@@ -24,7 +24,7 @@ namespace PersonalDiary.Models
         [DisplayName("UserId")]
         public int UserId { get; set; }
 
-        [DisplayName("User")]
-        public string User { get; set; }
+        [DisplayName("UserName")]
+        public string UserName { get; set; }
     }
 }

@@ -31,22 +31,20 @@ namespace PersonalDiary.Controllers
             string password = user.PassWord;
             string connStr = ConfigurationManager.ConnectionStrings["MySqlConnection"].ToString();
             MySqlConnection conn = new MySqlConnection(connStr);
- 
-                conn.Open();
-                string sqlstr = String.Format("select * from user where UserName = '{0}' and PassWord = '{1}';", username, password);
-                MySqlDataAdapter mda = new MySqlDataAdapter(sqlstr, conn);
-                DataSet ds = new DataSet();
-                mda.Fill(ds);
-                if (ds.Tables[0].Rows.Count == 0)
-                {
-                    Response.Write("<script>alert('帐号密码错误')</script>");
-                    return View();
-                }
-                else {
-                    Session["User"] = user; 
-                    return RedirectToAction("Index", "Home");
-                }
- 
+            conn.Open();
+            string sqlstr = String.Format("select * from user where UserName = '{0}' and PassWord = '{1}';", username, password);
+            MySqlDataAdapter mda = new MySqlDataAdapter(sqlstr, conn);
+            DataSet ds = new DataSet();
+            mda.Fill(ds);
+            if (ds.Tables[0].Rows.Count == 0)
+            {
+                Response.Write("<script>alert('帐号密码错误')</script>");
+                return View();
+            }else {
+                user.Id = Convert.ToInt32(ds.Tables[0].Rows[0]["Id"].ToString());
+                Session["User"] = user;
+                return RedirectToAction("Index", "Home");
+            }
         }
 
 

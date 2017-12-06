@@ -17,8 +17,10 @@
     </tr>
     @foreach (var diary in  Model) {
         <tr>
-            <td>@diary.Title</td>
-            <td>@diary.User</td>
+            <td>
+                <a href="@Url.Content("~/Home/Show/"+@diary.Id)">@diary.Title</a>
+            </td>
+            <td>@diary.UserName</td>
             <td>@diary.PubDate</td>
             <td>
                 <a href="@Url.Content("~/Home/Remove/"+@diary.Id)">删除</a>

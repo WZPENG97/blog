@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = @Model.Title;
+    var content = Model.Content;
+}
+<div class="main">
+    <div id="content">
+           @Html.Raw(Model.Content)
+    </div>
+    
+</div>
