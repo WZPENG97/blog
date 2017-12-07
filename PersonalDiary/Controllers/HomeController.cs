@@ -14,24 +14,24 @@ namespace PersonalDiary.Controllers
     public class HomeController : Controller
     {
         public ActionResult Index() {
-            var diaries = new List<Diary>();
+            var blogs = new List<Blog>();
             string connStr = ConfigurationManager.ConnectionStrings["MySqlConnection"].ToString();
             MySqlConnection conn = new MySqlConnection(connStr);
             conn.Open();
-            string sqlstr = "select * from diary";
+            string sqlstr = "select * from blog";
             MySqlCommand comm = new MySqlCommand(sqlstr, conn);
             MySqlDataReader reader = comm.ExecuteReader();
             while (reader.Read()) {
-                Diary diary = new Diary();
-                diary.Id = Convert.ToInt32(reader["Id"]);
-                diary.Title = reader["Title"].ToString();
-                diary.Content = reader["Content"].ToString();
-                diary.PubDate = Convert.ToDateTime(reader["PubDate"]);
-                diary.UserId = Convert.ToInt32(reader["UserId"]);
-                diary.UserName = Convert.ToString(reader["UserName"]);
-                diaries.Add(diary);
+                Blog blog = new Blog();
+                blog.Id = Convert.ToInt32(reader["Id"]);
+                blog.Title = reader["Title"].ToString();
+                blog.Content = reader["Content"].ToString();
+                blog.PubDate = Convert.ToDateTime(reader["PubDate"]);
+                blog.UserId = Convert.ToInt32(reader["UserId"]);
+                blog.UserName = Convert.ToString(reader["UserName"]);
+                blogs.Add(blog);
             }
-            return View(diaries);
+            return View(blogs);
         }
 
         public ActionResult About()
@@ -56,20 +56,20 @@ namespace PersonalDiary.Controllers
             string connStr = ConfigurationManager.ConnectionStrings["MySqlConnection"].ToString();
             MySqlConnection conn = new MySqlConnection(connStr);
             conn.Open();
-            string sqlstr = String.Format("select * from diary where Id = '{0}';", Id);
+            string sqlstr = String.Format("select * from blog where Id = '{0}';", Id);
             MySqlCommand comm = new MySqlCommand(sqlstr, conn);
             MySqlDataReader reader = comm.ExecuteReader();
-            var diary = new Diary();
+            var blog = new Blog();
             while (reader.Read())
             {
-                diary.Id = Convert.ToInt32(reader["Id"]);
-                diary.Title = reader["Title"].ToString();
-                diary.Content = reader["Content"].ToString(); ;
-                diary.PubDate = Convert.ToDateTime(reader["PubDate"]);
-                diary.UserId = Convert.ToInt32(reader["UserId"]);
-                diary.UserName = Convert.ToString(reader["UserName"]);
+                blog.Id = Convert.ToInt32(reader["Id"]);
+                blog.Title = reader["Title"].ToString();
+                blog.Content = reader["Content"].ToString(); ;
+                blog.PubDate = Convert.ToDateTime(reader["PubDate"]);
+                blog.UserId = Convert.ToInt32(reader["UserId"]);
+                blog.UserName = Convert.ToString(reader["UserName"]);
             }
-            return View(diary);
+            return View(blog);
         }
 
         

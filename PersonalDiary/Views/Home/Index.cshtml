@@ -1,4 +1,4 @@
-﻿@model List<Diary>
+﻿@model List<Blog>
 @{
     ViewBag.Title = "博客";
 }
@@ -9,13 +9,13 @@
         <td>作者</td>
         <td style="width:20%">发布时间</td>
     </tr>
-    @foreach (var diary in  Model) {
+    @foreach (var blog in  Model) {
         <tr>
             <td>
-                <a href="@Url.Content("~/Home/Show/"+@diary.Id)">@diary.Title</a>
+                <a href="@Url.Content("~/Home/Show/"+@blog.Id)">@blog.Title</a>
             </td>
-            <td>@diary.UserName</td>
-            <td>@diary.PubDate</td>
+            <td>@blog.UserName</td>
+            <td>@blog.PubDate</td>
         </tr>
     }
 </table>

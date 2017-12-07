@@ -14,30 +14,30 @@ namespace PersonalDiary.Controllers
         // GET: User
         public ActionResult Index()
         {
-            var diaries = new List<Diary>();
+            var blogs = new List<Blog>();
 
             if (Session["User"] != null)
             {
-                var id = ((Admin)Session["User"]).Id;
+                var id = ((User)Session["User"]).Id;
                 string connStr = ConfigurationManager.ConnectionStrings["MySqlConnection"].ToString();
                 MySqlConnection conn = new MySqlConnection(connStr);
                 conn.Open();
-                string sqlstr = String.Format("select * from diary where UserId = '{0}';", id);
+                string sqlstr = String.Format("select * from blog where UserId = '{0}';", id);
                 MySqlCommand comm = new MySqlCommand(sqlstr, conn);
                 MySqlDataReader reader = comm.ExecuteReader();
                 while (reader.Read())
                 {
-                    Diary diary = new Diary();
-                    diary.Id = Convert.ToInt32(reader["Id"]);
-                    diary.Title = reader["Title"].ToString();
-                    diary.Content = reader["Content"].ToString();
-                    diary.PubDate = Convert.ToDateTime(reader["PubDate"]);
-                    diary.UserId = Convert.ToInt32(reader["UserId"]);
-                    diary.UserName = Convert.ToString(reader["UserName"]);
-                    diaries.Add(diary);
+                    Blog blog = new Blog();
+                    blog.Id = Convert.ToInt32(reader["Id"]);
+                    blog.Title = reader["Title"].ToString();
+                    blog.Content = reader["Content"].ToString();
+                    blog.PubDate = Convert.ToDateTime(reader["PubDate"]);
+                    blog.UserId = Convert.ToInt32(reader["UserId"]);
+                    blog.UserName = Convert.ToString(reader["UserName"]);
+                    blogs.Add(blog);
                 }
             }
-            return View(diaries);
+            return View(blogs);
         }
 
         public ActionResult Remove(int id)
@@ -46,7 +46,7 @@ namespace PersonalDiary.Controllers
             string connStr = ConfigurationManager.ConnectionStrings["MySqlConnection"].ToString();
             MySqlConnection conn = new MySqlConnection(connStr);
             conn.Open();
-            string sqlstr = String.Format("delete from diary where Id = '{0}';", Id);
+            string sqlstr = String.Format("delete from blog where Id = '{0}';", Id);
             MySqlCommand comm = new MySqlCommand(sqlstr, conn);
             comm.ExecuteNonQuery();
             return RedirectToAction("Index", "Home");
@@ -59,16 +59,16 @@ namespace PersonalDiary.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Create(Diary diary)
+        public ActionResult Create(Blog blog)
         {
-            diary.PubDate = DateTime.Now;
-            diary.UserName = ((Admin)Session["User"]).UserName;
-            diary.UserId = ((Admin)Session["User"]).Id;
+            blog.PubDate = DateTime.Now;
+            blog.UserName = ((User)Session["User"]).UserName;
+            blog.UserId = ((User)Session["User"]).Id;
 
             string connStr = ConfigurationManager.ConnectionStrings["MySqlConnection"].ToString();
             MySqlConnection conn = new MySqlConnection(connStr);
             conn.Open();
-            string sqlstr = String.Format("insert into diary (Title,Content,PubDate,UserId,UserName) values ('{0}','{1}','{2}','{3}','{4}')", diary.Title, diary.Content, diary.PubDate, diary.UserId, diary.UserName);
+            string sqlstr = String.Format("insert into blog (Title,Content,PubDate,UserId,UserName) values ('{0}','{1}','{2}','{3}','{4}')", blog.Title, blog.Content, blog.PubDate, blog.UserId, blog.UserName);
             MySqlCommand comm = new MySqlCommand(sqlstr, conn);
             if (comm.ExecuteNonQuery() != 0)
             {

@@ -28,7 +28,7 @@
                             <ul class="nav navbar-nav navbar-right">
                                 <li>
                                     @{
-                                        var UserName = Session["User"] == null ? string.Empty : ((Admin)Session["User"]).UserName;
+                                        var UserName = Session["User"] == null ? string.Empty : ((User)Session["User"]).UserName;
                                     }
                                     <a href="/User/Index">@UserName</a>
                                 </li>

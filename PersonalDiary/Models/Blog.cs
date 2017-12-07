@@ -7,7 +7,7 @@ using System.Web;
 
 namespace PersonalDiary.Models
 {
-    public class Diary
+    public class Blog
     {
         [DisplayName("Id")]
         public int Id { get; set; }

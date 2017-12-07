@@ -15,7 +15,7 @@ namespace PersonalDiary.Controllers
         // GET: Admin
         public ActionResult Index()
         {
-            if (Session["User"] != null)
+            if (Session["Admin"] != null)
             {
                 var users = new List<User>();
                 string connStr = ConfigurationManager.ConnectionStrings["MySqlConnection"].ToString();
@@ -62,9 +62,21 @@ namespace PersonalDiary.Controllers
             else
             {
                 user.Id = Convert.ToInt32(ds.Tables[0].Rows[0]["Id"].ToString());
-                Session["User"] = user;
+                Session["Admin"] = user;
                 return RedirectToAction("Index", "Admin");
             }
+        }
+
+        public ActionResult Remove(int id)
+        {
+            var Id = id;
+            string connStr = ConfigurationManager.ConnectionStrings["MySqlConnection"].ToString();
+            MySqlConnection conn = new MySqlConnection(connStr);
+            conn.Open();
+            string sqlstr = String.Format("delete from user where Id = '{0}';", Id);
+            MySqlCommand comm = new MySqlCommand(sqlstr, conn);
+            comm.ExecuteNonQuery();
+            return RedirectToAction("Index", "Admin");
         }
     }
 }

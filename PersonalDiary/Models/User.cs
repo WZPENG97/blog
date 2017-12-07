@@ -18,7 +18,7 @@ namespace PersonalDiary.Models
         [DisplayName("PassWord"), Required, DataType(DataType.Password)]
         public string PassWord { get; set; }
 
-        [DisplayName("Diaries")]
-        public virtual List<Diary> Diaries { get; set; }
+        [DisplayName("Blogs")]
+        public virtual List<Blog> Blogs { get; set; }
     }
 }
