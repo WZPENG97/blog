@@ -113,3 +113,12 @@ C:\Users\Woo\Documents\Visual Studio 2017\Projects\PersonalDiary\PersonalDiary\o
 C:\Users\Woo\Documents\Visual Studio 2017\Projects\PersonalDiary\PersonalDiary\obj\Debug\PersonalDiary.csproj.CoreCompileInputs.cache
 C:\Users\Woo\Documents\Visual Studio 2017\Projects\PersonalDiary\PersonalDiary\obj\Debug\PersonalDiary.dll
 C:\Users\Woo\Documents\Visual Studio 2017\Projects\PersonalDiary\PersonalDiary\obj\Debug\PersonalDiary.pdb
+C:\Users\Woo\Documents\Visual Studio 2017\Projects\PersonalDiary\PersonalDiary\bin\System.Net.Http.Formatting.dll
+C:\Users\Woo\Documents\Visual Studio 2017\Projects\PersonalDiary\PersonalDiary\bin\System.Web.Http.dll
+C:\Users\Woo\Documents\Visual Studio 2017\Projects\PersonalDiary\PersonalDiary\bin\System.Web.Http.WebHost.dll
+C:\Users\Woo\Documents\Visual Studio 2017\Projects\PersonalDiary\PersonalDiary\bin\System.Net.Http.Formatting.xml
+C:\Users\Woo\Documents\Visual Studio 2017\Projects\PersonalDiary\PersonalDiary\bin\System.Web.Http.xml
+C:\Users\Woo\Documents\Visual Studio 2017\Projects\PersonalDiary\PersonalDiary\bin\System.Web.Http.WebHost.xml
+C:\Users\Woo\Documents\Visual Studio 2017\Projects\PersonalDiary\PersonalDiary\bin\zh-Hans\System.Net.Http.Formatting.resources.dll
+C:\Users\Woo\Documents\Visual Studio 2017\Projects\PersonalDiary\PersonalDiary\bin\zh-Hans\System.Web.Http.resources.dll
+C:\Users\Woo\Documents\Visual Studio 2017\Projects\PersonalDiary\PersonalDiary\bin\zh-Hans\System.Web.Http.WebHost.resources.dll

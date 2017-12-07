@@ -1,0 +1,36 @@
+﻿/* ---- reset ---- */
+html {
+    height:100%;
+    position:relative;
+}
+
+body {
+    margin: 0;
+    height:100%;
+    width:100%;
+    font: normal 75% Arial, Helvetica, sans-serif;
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:-2;
+}
+
+canvas {
+    display: block;
+    vertical-align: bottom;
+}
+/* ---- particles.js container ---- */
+
+#particles-js {
+    position:absolute;
+    z-index:-1;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    background-image: url("");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+}

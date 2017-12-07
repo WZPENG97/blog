@@ -43,7 +43,7 @@ namespace PersonalDiary.Controllers
             }else {
                 user.Id = Convert.ToInt32(ds.Tables[0].Rows[0]["Id"].ToString());
                 Session["User"] = user;
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "User");
             }
         }
 
@@ -54,7 +54,7 @@ namespace PersonalDiary.Controllers
         }
 
         [HttpPost]
-        public ActionResult Register(User user) {
+        public ActionResult Register(Admin user) {
             string username = user.UserName;
             string password = user.PassWord;
             string connStr = ConfigurationManager.ConnectionStrings["MySqlConnection"].ToString();
@@ -70,6 +70,7 @@ namespace PersonalDiary.Controllers
                 if (ds.Tables[0].Rows.Count != 0)
                 {
                     Response.Write("<script>alert('该用户已存在')</script>");
+                    return RedirectToAction("Register", "Account");
                 }
                 else
                 {
@@ -82,6 +83,7 @@ namespace PersonalDiary.Controllers
                     }
                     else {
                         Response.Write("<script>alert('注册失败，请重试')</script>");
+                        return RedirectToAction("Register", "Account");
                     }
                 }
             }
@@ -95,5 +97,6 @@ namespace PersonalDiary.Controllers
             }
             return View();
         }
+
     }
 }

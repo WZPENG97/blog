@@ -1,19 +1,19 @@
 ﻿@model User
 
 @{
-    ViewBag.Title = "Account Login";
+    ViewBag.Title = "登录";
 }
 
 @using (Html.BeginForm())
 {
     <div class="form-group">
-        <label for="UserName">UserName</label>
-        <input type="text" class="form-control" placeholder="Enter UserName" id="UserName" name="UserName" />
+        <label for="UserName">用户名</label>
+        <input type="text" class="form-control" placeholder="输入用户名" id="UserName" name="UserName" />
     </div>
 
     <div class="form-group">
-        <label for="PassWord">UserName</label>
-        <input type="password" class="form-control" placeholder="Enter PassWord" id="PassWord" name="PassWord" />
+        <label for="PassWord">密码</label>
+        <input type="password" class="form-control" placeholder="输入密码" id="PassWord" name="PassWord" />
     </div>
 
     <div class="btn-group pull-right">
