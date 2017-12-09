@@ -49,7 +49,7 @@ namespace PersonalDiary.Controllers
             string sqlstr = String.Format("delete from blog where Id = '{0}';", Id);
             MySqlCommand comm = new MySqlCommand(sqlstr, conn);
             comm.ExecuteNonQuery();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "User");
         }
 
         public ActionResult Create()

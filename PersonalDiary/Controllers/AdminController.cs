@@ -17,22 +17,25 @@ namespace PersonalDiary.Controllers
         {
             if (Session["Admin"] != null)
             {
-                var users = new List<User>();
+                var blogs = new List<Blog>();
                 string connStr = ConfigurationManager.ConnectionStrings["MySqlConnection"].ToString();
                 MySqlConnection conn = new MySqlConnection(connStr);
                 conn.Open();
-                string sqlstr = "select * from user";
+                string sqlstr = "select * from blog";
                 MySqlCommand comm = new MySqlCommand(sqlstr, conn);
                 MySqlDataReader reader = comm.ExecuteReader();
                 while (reader.Read())
                 {
-                    User user = new User();
-                    user.Id = Convert.ToInt32(reader["Id"]);
-                    user.UserName = Convert.ToString(reader["UserName"]);
-                    user.PassWord = Convert.ToString(reader["PassWord"]);
-                    users.Add(user);
+                    Blog blog = new Blog();
+                    blog.Id = Convert.ToInt32(reader["Id"]);
+                    blog.Title = reader["Title"].ToString();
+                    blog.Content = reader["Content"].ToString();
+                    blog.PubDate = Convert.ToDateTime(reader["PubDate"]);
+                    blog.UserId = Convert.ToInt32(reader["UserId"]);
+                    blog.UserName = Convert.ToString(reader["UserName"]);
+                    blogs.Add(blog);
                 }
-                return View(users);
+                return View(blogs);
             }
             return RedirectToAction("Login", "Admin");
         }
@@ -67,13 +70,19 @@ namespace PersonalDiary.Controllers
             }
         }
 
+        public ActionResult Logoff()
+        {
+            Session.Clear();
+            return RedirectToAction("Login", "Admin");
+        }
+
         public ActionResult Remove(int id)
         {
             var Id = id;
             string connStr = ConfigurationManager.ConnectionStrings["MySqlConnection"].ToString();
             MySqlConnection conn = new MySqlConnection(connStr);
             conn.Open();
-            string sqlstr = String.Format("delete from user where Id = '{0}';", Id);
+            string sqlstr = String.Format("delete from blog where Id = '{0}';", Id);
             MySqlCommand comm = new MySqlCommand(sqlstr, conn);
             comm.ExecuteNonQuery();
             return RedirectToAction("Index", "Admin");

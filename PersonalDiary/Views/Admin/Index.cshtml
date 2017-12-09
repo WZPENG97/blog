@@ -1,22 +1,24 @@
-﻿@model List<User>
+﻿@model List<Blog>
 @{
-    ViewBag.Title = "用户管理";
+    ViewBag.Title = "博客管理";
 }
 
 <table class="table table-bordered table-condensed table-hover table-striped">
     <tr>
         <td>Id</td>
-        <td>User</td>
-        <td style="width:20%">密码</td>
+        <td>标题</td>
+        <td style="width:20%">作者</td>
+        <td style="width:20%;">发布时间</td>
         <td>操作</td>
     </tr>
-    @foreach (var user in Model)
+    @foreach (var blog in Model)
     {
         <tr>
-            <td>@user.Id</td>
-            <td>@user.UserName</td>
-            <td>@user.PassWord</td>
-            <td><a href="@Url.Content("~/Admin/Remove/"+@user.Id)">删除</a></td>
+            <td>@blog.Id</td>
+            <td><a href="@Url.Content("~/Home/Show/"+@blog.Id)">@blog.Title</a></td>
+            <td>@blog.UserName</td>
+            <td>@blog.PubDate</td>
+            <td><a href="@Url.Content("~/Admin/Remove/"+@blog.Id)">删除</a></td>
         </tr>
     }
 
