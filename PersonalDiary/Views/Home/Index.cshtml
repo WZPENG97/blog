@@ -3,7 +3,7 @@
     ViewBag.Title = "博客";
 }
 
-<table class="table table-bordered table-condensed table-hover table-striped">
+<!--<table class="table table-bordered table-condensed table-hover table-striped">
     <tr>
         <td>标题</td>
         <td>作者</td>
@@ -19,3 +19,33 @@
         </tr>
     }
 </table>
+-->
+@foreach (var blog in Model)
+{
+    <div class="blog-item">
+        <h3><a href="@Url.Content("~/Home/Show/"+@blog.Id)">@blog.Title</a></h3>
+        <p>@blog.UserName</p>
+        <p>@blog.PubDate</p>
+    </div>
+    <!--<tr>
+        <td>
+            <a href="@Url.Content("~/Home/Show/"+@blog.Id)">@blog.Title</a>
+        </td>
+        <td>@blog.UserName</td>
+        <td>@blog.PubDate</td>
+    </tr>-->
+}
+<style>
+    .blog-item {
+        width: 100%;
+        border-bottom: 1px solid #eee;
+        margin: 10px 0;
+        padding:0 10px;
+    }
+    .blog-item p {
+        text-align:right;
+    }
+    .blog-item a{
+        text-decoration:none;
+    }
+</style>
