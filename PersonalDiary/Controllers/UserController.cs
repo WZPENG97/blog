@@ -76,5 +76,25 @@ namespace PersonalDiary.Controllers
             }
             return View();
         }
+
+        public ActionResult Info(int id)
+        {
+            var userid = id;
+            string connStr = ConfigurationManager.ConnectionStrings["MySqlConnection"].ToString();
+            MySqlConnection conn = new MySqlConnection(connStr);
+            conn.Open();
+            string sqlstr = String.Format("select * from user where Id = '{0}';", userid);
+            MySqlCommand comm = new MySqlCommand(sqlstr, conn);
+            MySqlDataReader reader = comm.ExecuteReader();
+            while (reader.Read())
+            {
+                User user = new User();
+                user.UserName = Convert.ToString(reader["UserName"]);
+                user.Major = reader["Major"].ToString();
+                user.Introduce = reader["Introduce"].ToString();
+                return View(user);
+            }
+            return View();
+        }
     }
 }

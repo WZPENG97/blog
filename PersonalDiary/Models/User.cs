@@ -20,5 +20,11 @@ namespace PersonalDiary.Models
 
         [DisplayName("Blogs")]
         public virtual List<Blog> Blogs { get; set; }
+
+        [DisplayName("Major")]
+        public string Major { get; set; }
+
+        [DisplayName("Introduce")]
+        public string Introduce { get; set; }
     }
 }

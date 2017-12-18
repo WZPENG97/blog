@@ -1,0 +1,23 @@
+﻿@model User
+@{
+    ViewBag.Title = "Info";
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            用户信息
+        </h3>
+    </div>
+    <div class="panel-body">
+        <b>用户:</b><p>@Model.UserName</p>
+        <b>简介:</b><p>@Model.Introduce</p>
+        <b>擅长领域:</b><p>@Model.Major</p>
+    </div>
+</div>
+<style>
+    .panel-body p{
+        line-height:40px;
+    }
+</style>
+

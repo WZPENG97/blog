@@ -18,14 +18,10 @@
     @foreach (var blog in Model)
     {
         <tr>
-            <td>
-                <a href="@Url.Content("~/Home/Show/"+@blog.Id)">@blog.Title</a>
-            </td>
-            <td>@blog.UserName</td>
+            <td><a href="@Url.Content("~/Home/Show/"+@blog.Id)">@blog.Title</a></td>
+            <td><a href="@Url.Content("~/User/Info/" + @blog.UserId)">@blog.UserName</a></td>
             <td>@blog.PubDate</td>
-            <td>
-                <a href="@Url.Content("~/User/Remove/"+@blog.Id)">删除</a>
-            </td>
+            <td><a href="@Url.Content("~/User/Remove/"+@blog.Id)">删除</a></td>
         </tr>
     }
 </table>

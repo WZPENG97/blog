@@ -32,18 +32,20 @@
                                         @{
                                             var UserName = Session["User"] == null ? string.Empty : ((User)Session["User"]).UserName;
                                         }
+                                        
                                         <a href="/User/Index">@UserName</a>
                                     </li>
-                                    <li>
                                         @if (Session["User"] == null)
                                         {
-                                            <a href="~/Account/Login">Login</a>
+                                            <li><a href="~/Account/Login">登录</a></li>
                                         }
                                         else
                                         {
-                                            <a href="~/Account/Logoff">Logoff</a>
-                                        }
-                                    </li>
+                                            var id = ((User)Session["User"]).Id;
+                                            <li>
+                                                <a href="~/EditInfo.aspx?id=@id" onclick="window.open(this.href,'_blank','height=150,width=800,top=300,left=400,toolbar=no,menubar=no,scrollbars=no, resizable=no,location=no, status=no');return false">编辑个人信息</a>
+                                            </li>
+                                            <li><a href="~/Account/Logoff">注销</a></li>}
                                 </ul>
                                             }
                                             else

@@ -23,8 +23,8 @@
 @foreach (var blog in Model)
 {
     <div class="blog-item">
-        <h3><a href="@Url.Content("~/Home/Show/"+@blog.Id)">@blog.Title</a></h3>
-        <p>@blog.UserName</p>
+        <h4><a href="@Url.Content("~/Home/Show/"+@blog.Id)">@blog.Title</a></h4>
+        <p><a href="@Url.Content("~/User/Info/"+@blog.UserId)">@blog.UserName</a></p>
         <p>@blog.PubDate</p>
     </div>
     <!--<tr>
